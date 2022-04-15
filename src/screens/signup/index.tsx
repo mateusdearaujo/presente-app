@@ -8,27 +8,27 @@ import {
 } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
 
-import StartImage from '../../assets/images/start-image.svg'
 import ShapeImage from '../../assets/images/shape.svg'
+import ArrowLeft from '../../assets/images/arrow-left.svg'
 import Section from '../../components/section'
 
-interface StartScreenProps {
+interface SignUpScreenProps {
   navigation: NavigationProp<any>
 }
 
-const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
+const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <View style={styles.backgroundStyle}>
         <View>
-          <ShapeImage />
+          <ShapeImage style={{ position: 'absolute' }} />
+          <ArrowLeft
+            style={{ left: 32, top: 50 }}
+            onPress={() => navigation.navigate('Start')}
+          />
         </View>
 
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <StartImage width={168} height={142} />
-        </View>
-
-        <Section title="Seja bem-vindo">
+        <Section title="Bem-vindo a bordo!">
           <Text>
             Seja solidário, faça parte da comunidade que busca melhorar a vida
             das pessoas através do nosso aplicativo.
@@ -43,7 +43,6 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
               alignItems: 'center',
               padding: 16,
             }}
-            onPress={() => navigation.navigate('SignUp')}
           >
             <Text
               style={{
@@ -52,7 +51,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
                 fontSize: 18,
               }}
             >
-              Iniciar
+              Cadastrar
             </Text>
           </TouchableOpacity>
         </View>
@@ -72,4 +71,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default StartScreen
+export default SignUpScreen
