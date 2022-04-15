@@ -4,22 +4,22 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native'
-import { NavigationProp } from '@react-navigation/native'
+
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import StartImage from '../../assets/images/start-image.svg'
 import ShapeImage from '../../assets/images/shape.svg'
 import Section from '../../components/section'
 
-interface StartScreenProps {
-  navigation: NavigationProp<any>
-}
+const StartScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
-const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.backgroundStyle}>
-      <View style={styles.backgroundStyle}>
+      <View>
         <View>
           <ShapeImage />
         </View>
@@ -36,25 +36,25 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
         </Section>
 
         <View style={[{ width: 315, marginLeft: 'auto', marginRight: 'auto' }]}>
-          <TouchableOpacity
+          <TouchableHighlight
             style={{
               backgroundColor: '#50C2C9',
               height: 54,
               alignItems: 'center',
               padding: 16,
             }}
-            onPress={() => navigation.navigate('SignUp')}
-          >
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'Poppins-SemiBold',
-                fontSize: 18,
-              }}
-            >
-              Iniciar
-            </Text>
-          </TouchableOpacity>
+            onPress={() => navigation.navigate('SignUp')}>
+            <View>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 18,
+                }}>
+                Iniciar
+              </Text>
+            </View>
+          </TouchableHighlight>
         </View>
       </View>
     </SafeAreaView>

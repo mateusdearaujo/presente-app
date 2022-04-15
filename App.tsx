@@ -13,8 +13,7 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-        }}
-      >
+        }}>
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
