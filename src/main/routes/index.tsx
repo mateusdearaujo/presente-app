@@ -2,13 +2,13 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import StartScreen from '~/screens/start'
-import SignUpScreen from '~/screens/signup'
-import LoginScreen from '~/screens/login'
+import StartScreen from '~/presentation/pages/start'
+import SignUpScreen from '~/presentation/pages/signup'
+import LoginScreen from '~/presentation/pages/login'
 
 const Stack = createNativeStackNavigator()
 
-const App = () => {
+export const Router: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -22,5 +22,3 @@ const App = () => {
     </NavigationContainer>
   )
 }
-
-export default App
