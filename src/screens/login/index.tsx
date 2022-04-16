@@ -13,16 +13,14 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import ShapeImage from '~/assets/images/shape.svg'
 import ArrowLeft from '~/assets/images/arrow-left.svg'
+import LoginImage from '~/assets/images/login-image.svg'
 import Section from '~/components/section'
-import useUser from '~/hooks/useUser'
 
-const SignUpScreen = () => {
+const LoginScreen = () => {
+  console.debug('text')
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  const { verifyUser } = useUser()
 
-  const [name, onChangeName] = useState('')
   const [email, onChangeEmail] = useState('')
-  const [password, onChangePassword] = useState('')
   const [passwordConfirmation, onChangePasswordConfirmation] = useState('')
 
   return (
@@ -36,31 +34,24 @@ const SignUpScreen = () => {
           />
         </View>
 
-        <View style={{ marginTop: 80 }}>
-          <Section title="Bem-vindo a bordo!">
-            <Text>Ajude-nos a melhorar a vida das pessoas</Text>
-          </Section>
+        <View style={{ marginTop: 80, height: 100 }}>
+          <Section title="Bem-vindo novamente!" />
         </View>
 
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeName}
-          value={name}
-          placeholder="Escreva seu nome completo"
-        />
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 25,
+          }}>
+          <LoginImage width={168} height={142} />
+        </View>
 
         <TextInput
           style={styles.input}
           onChangeText={onChangeEmail}
           value={email}
           placeholder="Digite seu e-mail"
-        />
-
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangePassword}
-          value={password}
-          placeholder="Crie sua senha"
         />
 
         <TextInput
@@ -87,7 +78,6 @@ const SignUpScreen = () => {
               padding: 16,
             }}>
             <Text
-              onPress={() => verifyUser({ name, email, password })}
               style={{
                 color: 'white',
                 fontFamily: 'Poppins-SemiBold',
@@ -105,11 +95,11 @@ const SignUpScreen = () => {
               fontFamily: 'Poppins-Regular',
               fontSize: 12,
             }}>
-            já tem uma conta?{' '}
+            Não tem uma conta?{' '}
             <Text
-              onPress={() => navigation.navigate('Login')}
+              onPress={() => navigation.navigate('SignUp')}
               style={{ color: '#50C2C9' }}>
-              Login
+              cadastre-se
             </Text>
           </Text>
         </View>
@@ -140,4 +130,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default SignUpScreen
+export default LoginScreen
