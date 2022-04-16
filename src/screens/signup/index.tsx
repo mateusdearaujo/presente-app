@@ -11,9 +11,9 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import ShapeImage from '../../assets/images/shape.svg'
-import ArrowLeft from '../../assets/images/arrow-left.svg'
-import Section from '../../components/section'
+import ShapeImage from '~/assets/images/shape.svg'
+import ArrowLeft from '~/assets/images/arrow-left.svg'
+import Section from '~/components/section'
 
 const SignUpScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
