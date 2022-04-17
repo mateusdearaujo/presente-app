@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -29,7 +29,7 @@ const StartScreen = () => {
         </Section>
 
         <View style={[{ width: 315, marginLeft: 'auto', marginRight: 'auto' }]}>
-          <TouchableHighlight
+          <TouchableOpacity
             style={{
               backgroundColor: '#50C2C9',
               height: 54,
@@ -47,7 +47,7 @@ const StartScreen = () => {
                 Iniciar
               </Text>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
