@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-} from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -30,8 +24,7 @@ const StartScreen = () => {
 
         <Section title="Seja bem-vindo">
           <Text>
-            Seja solidário, faça parte da comunidade que busca melhorar a vida
-            das pessoas através do nosso aplicativo.
+            Seja solidário, faça parte da comunidade que busca melhorar a vida das pessoas através do nosso aplicativo.
           </Text>
         </Section>
 

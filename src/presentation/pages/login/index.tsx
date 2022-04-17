@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-} from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
@@ -28,10 +20,7 @@ const LoginScreen = () => {
       <ScrollView>
         <View>
           <ShapeImage style={{ position: 'absolute' }} />
-          <ArrowLeft
-            style={{ left: 32, top: 50 }}
-            onPress={() => navigation.navigate('Start')}
-          />
+          <ArrowLeft style={{ left: 32, top: 50 }} onPress={() => navigation.navigate('Start')} />
         </View>
 
         <View style={{ marginTop: 80, height: 100 }}>
@@ -47,12 +36,7 @@ const LoginScreen = () => {
           <LoginImage width={168} height={142} />
         </View>
 
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeEmail}
-          value={email}
-          placeholder="Digite seu e-mail"
-        />
+        <TextInput style={styles.input} onChangeText={onChangeEmail} value={email} placeholder="Digite seu e-mail" />
 
         <TextInput
           style={styles.input}
@@ -96,9 +80,7 @@ const LoginScreen = () => {
               fontSize: 12,
             }}>
             Não tem uma conta?{' '}
-            <Text
-              onPress={() => navigation.navigate('SignUp')}
-              style={{ color: '#50C2C9' }}>
+            <Text onPress={() => navigation.navigate('SignUp')} style={{ color: '#50C2C9' }}>
               cadastre-se
             </Text>
           </Text>
