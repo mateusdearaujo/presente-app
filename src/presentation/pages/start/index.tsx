@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import StartImage from '~/presentation/assets/images/start-image.svg'
 import ShapeImage from '~/presentation/assets/images/shape.svg'
-import Section from '~/presentation/components/section'
+import { Section } from '~/presentation/components'
 
 const StartScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()

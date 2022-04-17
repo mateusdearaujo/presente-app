@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import ShapeImage from '~/presentation/assets/images/shape.svg'
 import ArrowLeft from '~/presentation/assets/images/arrow-left.svg'
 import LoginImage from '~/presentation/assets/images/login-image.svg'
-import Section from '~/presentation/components/section'
+import { Section } from '~/presentation/components'
 
 const LoginScreen = () => {
   console.debug('text')
@@ -67,7 +67,7 @@ const LoginScreen = () => {
                 fontFamily: 'Poppins-SemiBold',
                 fontSize: 18,
               }}>
-              Cadastrar
+              Entrar
             </Text>
           </TouchableOpacity>
         </View>

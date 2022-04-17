@@ -2,93 +2,123 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { Root } from 'popup-ui'
 
 import ShapeImage from '~/presentation/assets/images/shape.svg'
 import ArrowLeft from '~/presentation/assets/images/arrow-left.svg'
-import Section from '~/presentation/components/section'
+import { Section } from '~/presentation/components'
+import { Validation } from '~/presentation/protocols'
+import { SuccessModal, MissingFieldModal } from '~/presentation/pages/signup/components'
 
-const SignUpScreen = () => {
+type SignUpScreenProps = {
+  validation: Validation
+}
+
+const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation }) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const [name, onChangeName] = useState('')
   const [email, onChangeEmail] = useState('')
   const [password, onChangePassword] = useState('')
   const [passwordConfirmation, onChangePasswordConfirmation] = useState('')
+  const [warningModalVisible, setwarningModalVisible] = useState(false)
+  const [sucessModalVisible, setSucessModalVisible] = useState(false)
+
+  const requiredFields = [name, email, password, passwordConfirmation]
+
+  const handleSignUp = () => {
+    if (validation.validate(requiredFields)) {
+      setSucessModalVisible(true)
+      return
+    }
+
+    setwarningModalVisible(true)
+  }
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <ScrollView>
-        <View>
-          <ShapeImage style={{ position: 'absolute' }} />
-          <ArrowLeft style={{ left: 32, top: 50 }} onPress={() => navigation.navigate('Start')} />
-        </View>
+    <Root>
+      <SafeAreaView>
+        {warningModalVisible && <MissingFieldModal setModalState={setwarningModalVisible} />}
+        {sucessModalVisible && <SuccessModal />}
 
-        <View style={{ marginTop: 80 }}>
-          <Section title="Bem-vindo a bordo!">
-            <Text>Ajude-nos a melhorar a vida das pessoas</Text>
-          </Section>
-        </View>
+        <ScrollView>
+          <View>
+            <ShapeImage style={{ position: 'absolute' }} />
+            <ArrowLeft style={{ left: 32, top: 50 }} onPress={() => navigation.navigate('Start')} />
+          </View>
 
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeName}
-          value={name}
-          placeholder="Escreva seu nome completo"
-        />
+          <View style={{ marginTop: 80 }}>
+            <Section title="Bem-vindo a bordo!">
+              <Text>Ajude-nos a melhorar a vida das pessoas</Text>
+            </Section>
+          </View>
 
-        <TextInput style={styles.input} onChangeText={onChangeEmail} value={email} placeholder="Digite seu e-mail" />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeName}
+            value={name}
+            placeholder="Escreva seu nome completo"
+          />
+          <TextInput style={styles.input} onChangeText={onChangeEmail} value={email} placeholder="Digite seu e-mail" />
 
-        <TextInput style={styles.input} onChangeText={onChangePassword} value={password} placeholder="Crie sua senha" />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangePassword}
+            value={password}
+            placeholder="Crie sua senha"
+          />
 
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangePasswordConfirmation}
-          value={passwordConfirmation}
-          placeholder="Confirme sua senha"
-        />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangePasswordConfirmation}
+            value={passwordConfirmation}
+            placeholder="Confirme sua senha"
+          />
 
-        <View
-          style={[
-            {
-              width: 315,
-              marginTop: 40,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            },
-          ]}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#50C2C9',
-              height: 54,
-              alignItems: 'center',
-              padding: 16,
-            }}>
+          <View
+            style={[
+              {
+                width: 315,
+                marginTop: 40,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              },
+            ]}>
+            <TouchableOpacity
+              onPress={handleSignUp}
+              style={{
+                backgroundColor: '#50C2C9',
+                height: 54,
+                alignItems: 'center',
+                padding: 16,
+              }}>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 18,
+                }}>
+                Cadastrar
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ marginTop: 8 }}>
             <Text
               style={{
-                color: 'white',
-                fontFamily: 'Poppins-SemiBold',
-                fontSize: 18,
+                textAlign: 'center',
+                fontFamily: 'Poppins-Regular',
+                fontSize: 12,
               }}>
-              Cadastrar
+              já tem uma conta?{' '}
+              <Text onPress={() => navigation.navigate('Login')} style={{ color: '#50C2C9' }}>
+                Login
+              </Text>
             </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ marginTop: 8 }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontFamily: 'Poppins-Regular',
-              fontSize: 12,
-            }}>
-            já tem uma conta?{' '}
-            <Text onPress={() => navigation.navigate('Login')} style={{ color: '#50C2C9' }}>
-              Login
-            </Text>
-          </Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </Root>
   )
 }
 
