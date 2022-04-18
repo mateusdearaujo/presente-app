@@ -1,8 +1,8 @@
 import React from 'react'
-import SQLiteAddAccountRepository from '~/infra/db/sqlite/sqlite-add-account-repository'
 import SignUpScreen from '~/presentation/pages/signup'
 import { RequiredFieldValidation } from '~/validation/validators'
+import { makeDbAddAccount } from '~/main/factories/usecases/db-add-account-factory'
 
 export const MakeSignUp: React.FC = () => {
-  return <SignUpScreen validation={new RequiredFieldValidation()} addAccount={new SQLiteAddAccountRepository()} />
+  return <SignUpScreen validation={new RequiredFieldValidation()} addAccount={makeDbAddAccount()} />
 }

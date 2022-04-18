@@ -4,7 +4,6 @@ enablePromise(true)
 
 export const getDBConnection = async (): Promise<SQLiteDatabase> => {
   const db = await openDatabase({ name: 'presente-app-db.db', location: 'default' })
-  console.log({ db })
   await createUsersTable(db)
   return db
 }

@@ -1,14 +1,20 @@
 import { AddAccountUseCase } from '~/domain/usecases'
-import { AddAccountRepo } from '~/data/protocols/add-account-repo'
+import { AddAccountRepo, GetAccountByEmailRepo } from '~/data/protocols'
 
 export class DbAddAccount implements AddAccountUseCase {
   private addAccountRepository: AddAccountRepo
+  private getAccountRepository: GetAccountByEmailRepo
 
-  constructor(addAccountRepo: AddAccountRepo) {
+  constructor(addAccountRepo: AddAccountRepo, getAccountByEmailRepo: GetAccountByEmailRepo) {
     this.addAccountRepository = addAccountRepo
+    this.getAccountRepository = getAccountByEmailRepo
   }
 
   async add(params: AddAccountUseCase.Params): Promise<void> {
-    this.addAccountRepository.add(params)
+    const account = await this.getAccountRepository.get(params.email)
+
+    if (!account) {
+      await this.addAccountRepository.add(params)
+    }
   }
 }
