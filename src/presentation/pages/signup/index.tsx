@@ -9,12 +9,14 @@ import ArrowLeft from '~/presentation/assets/images/arrow-left.svg'
 import { Section } from '~/presentation/components'
 import { Validation } from '~/presentation/protocols'
 import { SuccessModal, MissingFieldModal } from '~/presentation/pages/signup/components'
+import { AddAccountUseCase } from '~/domain/usecases'
 
 type SignUpScreenProps = {
   validation: Validation
+  addAccount: AddAccountUseCase
 }
 
-const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation }) => {
+const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const [name, onChangeName] = useState('')
@@ -26,8 +28,9 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation }) => {
 
   const requiredFields = [name, email, password, passwordConfirmation]
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (validation.validate(requiredFields)) {
+      await addAccount.add({ name, email, password })
       setSucessModalVisible(true)
       return
     }

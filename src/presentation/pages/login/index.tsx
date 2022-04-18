@@ -9,7 +9,6 @@ import LoginImage from '~/presentation/assets/images/login-image.svg'
 import { Section } from '~/presentation/components'
 
 const LoginScreen = () => {
-  console.debug('text')
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const [email, onChangeEmail] = useState('')
