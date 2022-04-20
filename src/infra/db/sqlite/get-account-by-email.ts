@@ -1,5 +1,6 @@
 import { GetAccountByEmailRepo } from '~/data/protocols'
-import { getDBConnection } from '~/infra/db/sqlite'
+
+import { getDBConnection } from './connection'
 
 export class SQLiteGetAccountByEmailRepository implements GetAccountByEmailRepo {
   async get(email: string): Promise<GetAccountByEmailRepo.Account> {

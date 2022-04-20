@@ -30,9 +30,14 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
 
   const handleSignUp = async () => {
     if (validation.validate(requiredFields)) {
-      await addAccount.add({ name, email, password })
-      setSucessModalVisible(true)
-      setTimeout(() => navigation.navigate('Login'), 2000)
+      const account = await addAccount.add({ name, email, password })
+
+      if (account) {
+        setSucessModalVisible(true)
+        setTimeout(() => {
+          navigation.navigate('Login')
+        }, 3000)
+      }
     }
 
     setwarningModalVisible(true)

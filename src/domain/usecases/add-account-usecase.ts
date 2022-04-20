@@ -1,5 +1,7 @@
+import { AccountModel } from '~/domain/models'
+
 export interface AddAccountUseCase {
-  add: (params: AddAccountUseCase.Params) => Promise<void>
+  add: (params: AddAccountUseCase.Params) => Promise<AccountModel | void>
 }
 
 export namespace AddAccountUseCase {

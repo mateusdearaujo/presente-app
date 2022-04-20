@@ -9,7 +9,8 @@ export class Authentication implements AuthenticationUseCase {
 
     return {
       id: 1,
-      username: params.email,
+      name: params.email,
+      email: params.email,
       password: params.password,
     }
   }
