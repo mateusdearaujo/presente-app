@@ -1,17 +1,30 @@
 import { AccountModel } from '~/domain/models'
 import { AuthenticationUseCase } from '~/domain/usecases'
+import { AuthAccountRepo } from '../protocols'
 
 export class Authentication implements AuthenticationUseCase {
-  async auth(params: AuthenticationUseCase.Params): Promise<AccountModel> {
+  private authAccountRepository: AuthAccountRepo
+
+  constructor(authAccountRepo: AuthAccountRepo) {
+    this.authAccountRepository = authAccountRepo
+  }
+
+  async auth(params: AuthenticationUseCase.Params): Promise<AccountModel | undefined> {
     if (!params) {
-      throw new Error('missing params')
+      return
+    }
+
+    const account = await this.authAccountRepository.auth(params.email, params.password)
+
+    if (!account) {
+      return undefined
     }
 
     return {
-      id: 1,
-      name: params.email,
-      email: params.email,
-      password: params.password,
+      id: account.id,
+      name: account.name,
+      email: account.email,
+      password: account.password,
     }
   }
 }

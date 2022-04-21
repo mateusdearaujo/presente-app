@@ -10,7 +10,7 @@ export class SQLiteGetAccountByEmailRepository implements GetAccountByEmailRepo 
 
     const results = await db.executeSql(query, [email])
 
-    const rows: any[] = []
+    const rows: GetAccountByEmailRepo.Account[] = []
 
     results.forEach(result => {
       for (let index = 0; index < result.rows.length; index++) {

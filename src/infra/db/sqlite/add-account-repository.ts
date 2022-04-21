@@ -9,7 +9,5 @@ export class SQLiteAddAccountRepository implements AddAccountRepo {
     const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?);'
 
     await db.executeSql(query, [name, email, password])
-
-    await db.executeSql('SELECT * FROM users WHERE email = ?;', [email])
   }
 }
