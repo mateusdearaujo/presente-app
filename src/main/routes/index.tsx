@@ -1,17 +1,17 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import StartScreen from '~/presentation/pages/start'
 import LoginScreen from '~/presentation/pages/login'
-import UserContext from '~/presentation/contexts/user/context'
-import { MakeSignUp } from '~/main/factories/pages'
 import DashboardScreen from '~/presentation/pages/dashboard'
+import { useUserContext } from '~/presentation/context/user'
+import { MakeSignUp } from '~/main/factories/pages'
 
 const Stack = createNativeStackNavigator()
 
 export const Router: React.FC = () => {
-  const { account, isSignedIn } = useContext(UserContext)
+  const { account, isSignedIn } = useUserContext()
 
   useEffect(() => {
     isSignedIn()

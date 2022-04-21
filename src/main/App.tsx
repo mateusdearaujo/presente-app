@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { UserContextProvider } from '~/presentation/contexts/user/provider'
+import { UserProvider } from '~/presentation/context/user'
 import { Router } from '~/main/routes'
 
 const App = () => {
   return (
-    <UserContextProvider>
+    <UserProvider>
       <Router />
-    </UserContextProvider>
+    </UserProvider>
   )
 }
 

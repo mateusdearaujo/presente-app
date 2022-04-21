@@ -2,31 +2,31 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useState, useCallback } from 'react'
 
 import { AccountModel } from '~/domain/models'
-import UserContext, { UserContextProps } from '~/presentation/contexts/user/context'
+import { UserContextProtocol } from './UserContextProtocol'
+import userContext from './userContext'
 
-const UserContextProvider: React.FC = ({ children }) => {
+export const UserProvider: React.FC = ({ children }) => {
   const [accountState, setAccountState] = useState<AccountModel | null>(null)
 
   const isSignedIn = useCallback(async () => {
+    console.log('verificou se o usuario esta autenticado')
     const jsonValue = await AsyncStorage.getItem('@account')
 
     setAccountState(jsonValue != null ? JSON.parse(jsonValue) : null)
   }, [])
 
   const setAccount = async (account: AccountModel) => {
+    console.log(`cadastrou novo usuario: ${JSON.stringify(account)}`)
     setAccountState(account)
 
     await AsyncStorage.setItem('@account', JSON.stringify(account))
   }
 
-  const value: UserContextProps = {
+  const value: UserContextProtocol = {
     account: accountState,
     setAccount,
     isSignedIn,
   }
 
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>
+  return <userContext.Provider value={value}>{children}</userContext.Provider>
 }
-
-export { UserContextProvider }
-export default { UserContext }
