@@ -19,6 +19,8 @@ target 'MyApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'MyAppTests' do
     inherit! :complete
     # Pods for testing

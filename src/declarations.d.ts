@@ -6,3 +6,4 @@ declare module '*.svg' {
 }
 
 declare module 'popup-ui'
+declare module 'react-native-reanimated'

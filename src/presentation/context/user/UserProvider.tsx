@@ -11,8 +11,6 @@ export const UserProvider: React.FC = ({ children }) => {
   const isSignedIn = useCallback(async () => {
     console.log('verificou se o usuario esta autenticado')
 
-    // await AsyncStorage.removeItem('@account')
-
     const jsonValue = await AsyncStorage.getItem('@account')
 
     setAccountState(jsonValue != null ? JSON.parse(jsonValue) : null)
