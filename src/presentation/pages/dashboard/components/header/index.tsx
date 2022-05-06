@@ -4,14 +4,16 @@ import { useNavigation } from '@react-navigation/native'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
 
 import MenuImage from '~/presentation/assets/images/menu.svg'
+import SearchImage from '~/presentation/assets/images/search.svg'
 
 const Header = () => {
   const navigation = useNavigation<DrawerNavigationProp<any>>()
 
   return (
     <View style={styles.backgroundStyle}>
-      <View>
+      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
         <MenuImage onPress={() => navigation.openDrawer()} />
+        <SearchImage />
       </View>
     </View>
   )

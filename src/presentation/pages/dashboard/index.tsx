@@ -1,28 +1,24 @@
-import * as React from 'react'
-import { Button, View, SafeAreaView, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { Header } from './components'
+
+import { Header, Campaign } from './components'
+
+import { mockedCampaigns } from '~/presentation/data'
 
 const Drawer = createDrawerNavigator()
 
-function TesteScreen({ navigation }) {
+function TesteScreen() {
   return (
     <>
       <Header />
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button onPress={() => navigation.navigate('Notifications')} title="Go to notifications" />
-      </View>
-    </>
-  )
-}
-
-function Teste2Screen({ navigation }) {
-  return (
-    <>
-      <Header />
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button onPress={() => navigation.goBack()} title="Go back home" />
-      </View>
+      <ScrollView>
+        {mockedCampaigns.map((campaign, index) => {
+          const obj = { ...campaign, index }
+          return <Campaign {...obj} key={index} />
+        })}
+        <View style={{ height: 10 }} />
+      </ScrollView>
     </>
   )
 }
@@ -32,7 +28,6 @@ const DashboardScreen = () => {
     <SafeAreaView style={styles.backgroundStyle}>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={TesteScreen} options={{ headerShown: false }} />
-        <Drawer.Screen name="Notifications" component={Teste2Screen} options={{ headerShown: false }} />
       </Drawer.Navigator>
     </SafeAreaView>
   )
