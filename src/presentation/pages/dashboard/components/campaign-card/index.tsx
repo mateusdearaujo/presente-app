@@ -1,7 +1,9 @@
 import React from 'react'
 import { Image, Text, View, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { DrawerNavigationProp } from '@react-navigation/drawer'
 
-type CampaignProps = {
+type CampaignCardProps = {
   index: number
   logo: string
   title: string
@@ -10,7 +12,7 @@ type CampaignProps = {
   campaignDescription: string
 }
 
-const Campaign: React.FC<CampaignProps> = ({
+const CampaignCard: React.FC<CampaignCardProps> = ({
   index,
   logo,
   title,
@@ -18,8 +20,10 @@ const Campaign: React.FC<CampaignProps> = ({
   campaignImage,
   campaignDescription,
 }) => {
+  const navigation = useNavigation<DrawerNavigationProp<any>>()
+
   return (
-    <TouchableOpacity onPress={() => console.log(index)}>
+    <TouchableOpacity onPress={() => navigation.navigate('Campaign', { index })}>
       <View style={{ height: 66, display: 'flex', flexDirection: 'row' }}>
         <View style={{ padding: 12 }}>
           <Image
@@ -58,4 +62,4 @@ const Campaign: React.FC<CampaignProps> = ({
   )
 }
 
-export default Campaign
+export default CampaignCard

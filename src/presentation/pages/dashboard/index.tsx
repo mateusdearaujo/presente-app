@@ -2,8 +2,9 @@ import React from 'react'
 import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 
-import { Header, Campaign } from './components'
+import { Header, CampaignCard } from './components'
 
+import Campaign from '~/presentation/pages/campaign'
 import { mockedCampaigns } from '~/presentation/data'
 
 const Drawer = createDrawerNavigator()
@@ -15,7 +16,7 @@ function TesteScreen() {
       <ScrollView>
         {mockedCampaigns.map((campaign, index) => {
           const obj = { ...campaign, index }
-          return <Campaign {...obj} key={index} />
+          return <CampaignCard {...obj} key={index} />
         })}
         <View style={{ height: 10 }} />
       </ScrollView>
@@ -28,6 +29,11 @@ const DashboardScreen = () => {
     <SafeAreaView style={styles.backgroundStyle}>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={TesteScreen} options={{ headerShown: false }} />
+        <Drawer.Screen
+          name="Campaign"
+          component={Campaign}
+          options={{ headerShown: false, drawerItemStyle: { height: 0 } }}
+        />
       </Drawer.Navigator>
     </SafeAreaView>
   )
