@@ -20,10 +20,16 @@ export const UserProvider: React.FC = ({ children }) => {
     await AsyncStorage.setItem('@account', JSON.stringify(account))
   }
 
+  const logout = async () => {
+    await AsyncStorage.removeItem('@account')
+    setAccountState(null)
+  }
+
   const value: UserContextProtocol = {
     account: accountState,
     setAccount,
     isSignedIn,
+    logout,
   }
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>
