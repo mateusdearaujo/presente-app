@@ -66,14 +66,22 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
             onChangeText={onChangeName}
             value={name}
             placeholder="Escreva seu nome completo"
+            placeholderTextColor="grey"
           />
-          <TextInput style={styles.input} onChangeText={onChangeEmail} value={email} placeholder="Digite seu e-mail" />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEmail}
+            value={email}
+            placeholder="Digite seu e-mail"
+            placeholderTextColor="grey"
+          />
 
           <TextInput
             style={styles.input}
             onChangeText={onChangePassword}
             value={password}
             placeholder="Crie sua senha"
+            placeholderTextColor="grey"
           />
 
           <TextInput
@@ -81,6 +89,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
             onChangeText={onChangePasswordConfirmation}
             value={passwordConfirmation}
             placeholder="Confirme sua senha"
+            placeholderTextColor="grey"
           />
 
           <View
@@ -117,6 +126,8 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
                 textAlign: 'center',
                 fontFamily: 'Poppins-Regular',
                 fontSize: 12,
+                fontWeight: '400',
+                color: '#000000',
               }}>
               já tem uma conta?{' '}
               <Text onPress={() => navigation.navigate('Login')} style={{ color: '#50C2C9' }}>
@@ -149,6 +160,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
     padding: 10,
     backgroundColor: '#FFFFFF',
+    color: 'grey',
   },
 })
 

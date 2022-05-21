@@ -9,15 +9,12 @@ export const UserProvider: React.FC = ({ children }) => {
   const [accountState, setAccountState] = useState<AccountModel | null>(null)
 
   const isSignedIn = useCallback(async () => {
-    console.log('verificou se o usuario esta autenticado')
-
     const jsonValue = await AsyncStorage.getItem('@account')
 
     setAccountState(jsonValue != null ? JSON.parse(jsonValue) : null)
   }, [])
 
   const setAccount = async (account: AccountModel) => {
-    console.log(`cadastrou novo usuario: ${JSON.stringify(account)}`)
     setAccountState(account)
 
     await AsyncStorage.setItem('@account', JSON.stringify(account))

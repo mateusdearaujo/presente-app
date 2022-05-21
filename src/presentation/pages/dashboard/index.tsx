@@ -6,6 +6,7 @@ import { Header, CampaignCard } from './components'
 
 import Campaign from '~/presentation/pages/campaign'
 import { mockedCampaigns } from '~/presentation/data'
+import ProfileScreen from '~/presentation/pages/profile'
 
 const Drawer = createDrawerNavigator()
 
@@ -34,6 +35,7 @@ const DashboardScreen = () => {
           component={Campaign}
           options={{ headerShown: false, drawerItemStyle: { height: 0 } }}
         />
+        <Drawer.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       </Drawer.Navigator>
     </SafeAreaView>
   )

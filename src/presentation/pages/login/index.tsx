@@ -68,13 +68,20 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ authentication }) => {
             <LoginImage width={168} height={142} />
           </View>
 
-          <TextInput style={styles.input} onChangeText={onChangeEmail} value={email} placeholder="Digite seu e-mail" />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEmail}
+            value={email}
+            placeholder="Digite seu e-mail"
+            placeholderTextColor="grey"
+          />
 
           <TextInput
             style={styles.input}
             onChangeText={onChangePassword}
             value={password}
             placeholder="Confirme sua senha"
+            placeholderTextColor="grey"
           />
 
           <View
@@ -111,6 +118,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ authentication }) => {
                 textAlign: 'center',
                 fontFamily: 'Poppins-Regular',
                 fontSize: 12,
+                fontWeight: '400',
+                color: '#000000',
               }}>
               Não tem uma conta?{' '}
               <Text onPress={() => navigation.navigate('SignUp')} style={{ color: '#50C2C9' }}>
@@ -143,6 +152,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
     padding: 10,
     backgroundColor: '#FFFFFF',
+    color: 'grey',
   },
 })
 
