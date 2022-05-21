@@ -30,8 +30,8 @@ const Card: React.FC<CardProps> = ({ title, qtd, children }) => {
       <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
         <View>{children}</View>
         <View style={{ flex: 1, padding: 6 }}>
-          <Text style={{ marginBottom: 2 }}>{title}</Text>
-          <Text>{qtd}</Text>
+          <Text style={{ marginBottom: 2, fontSize: 16, color: 'rgba(0, 0, 0, 0.6)' }}>{title}</Text>
+          <Text style={{ fontSize: 12, color: 'grey' }}>{qtd}</Text>
         </View>
       </View>
     </View>

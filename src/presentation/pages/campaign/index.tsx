@@ -35,7 +35,7 @@ const CampaignScreen = () => {
             <Text style={{ fontSize: 16, color: '#000000', fontWeight: 'bold', paddingBottom: 10 }}>
               Sobre a campanha:
             </Text>
-            <Text style={{ fontSize: 12 }}>{campaignData.campaignText}</Text>
+            <Text style={{ fontSize: 12, color: 'grey' }}>{campaignData.campaignText}</Text>
           </View>
         </View>
         <View

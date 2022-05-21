@@ -37,16 +37,13 @@ const ProfileScreen = () => {
           <Phone /> (11) 1111-1111 {'\n'}
         </Text>
         <Text style={styles.userInformation}>
-          <Mail />
-          email@mail.com {'\n'}
+          <Mail /> email@mail.com {'\n'}
         </Text>
         <Text style={styles.userInformation}>
-          <CreditCard />
-          Informação de pagamento {'\n'}
+          <CreditCard /> Informação de pagamento {'\n'}
         </Text>
         <Text style={styles.userInformation}>
-          <Calendar />
-          Cadastrou-se em 01/01/2022{'\n'}
+          <Calendar /> Cadastrou-se em 01/01/2022{'\n'}
         </Text>
       </View>
       <View
@@ -69,12 +66,14 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 20,
     textTransform: 'capitalize',
+    color: 'grey',
   },
   userInformation: {
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
     fontSize: 16,
+    color: 'grey',
   },
 })
 

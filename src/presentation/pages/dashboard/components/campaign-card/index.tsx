@@ -49,7 +49,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({
         />
       </View>
       <View style={{ paddingTop: 10, paddingLeft: 20, height: 98 }}>
-        <Text style={{ textAlign: 'left', fontSize: 16 }}>{campaignDescription}</Text>
+        <Text style={{ textAlign: 'left', fontSize: 16, color: 'grey' }}>{campaignDescription}</Text>
       </View>
       <View
         style={{
