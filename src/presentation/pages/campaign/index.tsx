@@ -5,7 +5,7 @@ import { RouteProp, useRoute } from '@react-navigation/native'
 import { Header } from '~/presentation/pages/dashboard/components'
 import { mockedCampaigns, campaign } from '~/presentation/data'
 
-const Campaign = () => {
+const CampaignScreen = () => {
   const route: RouteProp<{ params: { index: number } }> = useRoute()
 
   const { index } = route.params
@@ -70,4 +70,4 @@ const Campaign = () => {
   )
 }
 
-export default Campaign
+export default CampaignScreen

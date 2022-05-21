@@ -1,38 +1,22 @@
 import React from 'react'
-import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 
-import { Header, CampaignCard } from './components'
-
-import Campaign from '~/presentation/pages/campaign'
-import { mockedCampaigns } from '~/presentation/data'
+import CampaignScreen from '~/presentation/pages/campaign'
 import ProfileScreen from '~/presentation/pages/profile'
 
-const Drawer = createDrawerNavigator()
+import { Content } from './components'
 
-function TesteScreen() {
-  return (
-    <>
-      <Header />
-      <ScrollView>
-        {mockedCampaigns.map((campaign, index) => {
-          const obj = { ...campaign, index }
-          return <CampaignCard {...obj} key={index} />
-        })}
-        <View style={{ height: 10 }} />
-      </ScrollView>
-    </>
-  )
-}
+const Drawer = createDrawerNavigator()
 
 const DashboardScreen = () => {
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={TesteScreen} options={{ headerShown: false }} />
+        <Drawer.Screen name="Home" component={Content} options={{ headerShown: false }} />
         <Drawer.Screen
           name="Campaign"
-          component={Campaign}
+          component={CampaignScreen}
           options={{ headerShown: false, drawerItemStyle: { height: 0 } }}
         />
         <Drawer.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
