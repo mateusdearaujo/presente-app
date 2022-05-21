@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Image, Text, View, TouchableOpacity } from 'react-native'
+import { Text, View } from 'react-native'
 
 type CardProps = {
   title: string
