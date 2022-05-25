@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 
 import CampaignScreen from '~/presentation/pages/campaign'
 import ProfileScreen from '~/presentation/pages/profile'
+import CreditCardScreen from '~/presentation/pages/credit-card'
 
 import { Content, Logout } from './components'
 
@@ -21,6 +22,11 @@ const DashboardScreen = () => {
         />
         <Drawer.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         <Drawer.Screen name="Logout" component={Logout} options={{ headerShown: false }} />
+        <Drawer.Screen
+          name="CreditCard"
+          component={CreditCardScreen}
+          options={{ headerShown: false, drawerLabel: () => null }}
+        />
       </Drawer.Navigator>
     </SafeAreaView>
   )

@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { View, SafeAreaView, Text, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { DrawerNavigationProp } from '@react-navigation/drawer'
 
 import { useUserContext } from '~/presentation/context/user'
 import { Header } from '~/presentation/pages/dashboard/components'
@@ -15,6 +17,7 @@ import Gift from '~/presentation/assets/images/gift.svg'
 import Lol from '~/presentation/assets/images/lol.svg'
 
 const ProfileScreen = () => {
+  const navigation = useNavigation<DrawerNavigationProp<any>>()
   const { account } = useUserContext()
 
   return (
@@ -39,7 +42,7 @@ const ProfileScreen = () => {
         <Text style={styles.userInformation}>
           <Mail /> email@mail.com {'\n'}
         </Text>
-        <Text style={styles.userInformation}>
+        <Text style={styles.userInformation} onPress={() => navigation.navigate('CreditCard')}>
           <CreditCard /> Informação de pagamento {'\n'}
         </Text>
         <Text style={styles.userInformation}>
