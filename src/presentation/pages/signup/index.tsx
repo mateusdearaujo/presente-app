@@ -82,6 +82,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
             value={password}
             placeholder="Crie sua senha"
             placeholderTextColor="grey"
+            secureTextEntry={true}
           />
 
           <TextInput
@@ -90,6 +91,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ validation, addAccount }) =
             value={passwordConfirmation}
             placeholder="Confirme sua senha"
             placeholderTextColor="grey"
+            secureTextEntry={true}
           />
 
           <View

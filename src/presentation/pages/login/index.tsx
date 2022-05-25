@@ -82,6 +82,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ authentication }) => {
             value={password}
             placeholder="Confirme sua senha"
             placeholderTextColor="grey"
+            secureTextEntry={true}
           />
 
           <View
