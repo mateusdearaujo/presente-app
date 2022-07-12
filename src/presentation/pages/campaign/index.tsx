@@ -15,7 +15,7 @@ const CampaignScreen = () => {
   return (
     <>
       <Header />
-      <ScrollView>
+      <ScrollView style={{ height: '100%', width: '100%' }}>
         <View>
           <Image
             source={{
